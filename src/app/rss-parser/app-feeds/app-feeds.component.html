@@ -1,0 +1,23 @@
+<app-header> </app-header>
+<app-loader [loading]="loading"></app-loader>
+<div class="container-fluid d-flex jumbotron justify-content-around">
+  <div class="input-group mb-3 col-5">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="ngModelUrl"
+      placeholder="Recipient's username"
+      aria-label="Recipient's username"
+      aria-describedby="basic-addon2"
+    />
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        (click)="sendUrl(ngModelUrl)"
+        type="button"
+      >
+        Button
+      </button>
+    </div>
+  </div>
+</div>
