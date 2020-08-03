@@ -12,6 +12,7 @@ import { FeedEntry } from 'src/app/model/feed-entry-model';
 import { FeedInfo, Page } from 'src/app/model/feed-model';
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { NotificationService } from '../../shared/notification/notification.service';
 import { ViewFeedsService } from '../view-feeds.service';
@@ -33,7 +34,8 @@ export class ViewFeedsComponent implements OnInit, OnDestroy {
 
   constructor(
     private viewFeedsService: ViewFeedsService,
-    public msg: NotificationService
+    public msg: NotificationService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -50,6 +52,8 @@ export class ViewFeedsComponent implements OnInit, OnDestroy {
     const localUrl = localStorage.getItem('url') || urlOb$;
     if (localUrl) {
       this.getFeeds(localUrl);
+    } else {
+      this.router.navigate(['/feeds/add']);
     }
   }
 
@@ -91,6 +95,7 @@ export class ViewFeedsComponent implements OnInit, OnDestroy {
             'Error',
             'Please check your Url'
           );
+          this.router.navigate(['/feeds/add']);
         }
       );
   }
@@ -106,7 +111,6 @@ export class ViewFeedsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.destroy$.next(true);
-    // Now let's also unsubscribe from the subject itself:
     this.destroy$.unsubscribe();
   }
 }

@@ -20,7 +20,6 @@ export class ViewFeedsService {
     if (url) {
       localStorage.setItem('url', url);
     }
-    console.log(localStorage.getItem('url'), 'local');
     this.sharedUrl$.next(localStorage.getItem('url'));
   }
 
