@@ -12,7 +12,7 @@
 </div>
 <div class="container-fluid mb-5">
   <div class="p-3 font-weight-bolder">Total Feeds: {{ total$ | async }}</div>
-  <div class="card mb-3" *ngFor="let entry of items$ | async">
+  <div class="card mb-3 shadow" *ngFor="let entry of items$ | async">
     <div class="card-header">
       {{ entry.category | uppercase }}
     </div>
@@ -24,7 +24,7 @@
         </p>
       </div>
       <p class="card-text">{{ entry.description }}</p>
-      <a href="{{ entry.link }}" target="_blank" class="btn btn-primary"
+      <a href="{{ entry.link }}" target="_blank" class="btn btn-link"
         >Read More</a
       >
     </div>
